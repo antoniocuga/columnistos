@@ -18,7 +18,7 @@ class ElcomerciopeSpider(scrapy.Spider):
         @scrapes author title url
         """
         selectors = response.xpath('//div[@class="flows-grid"]//div[@class="flow-1x1"]')
-        print selectors
+        
         for selector in selectors:
             yield self.parse_article(selector, response)
 
@@ -26,6 +26,6 @@ class ElcomerciopeSpider(scrapy.Spider):
         loader = ItemLoader(DiariosItem(), selector=selector)
 
         loader.add_xpath('title', './/h2//text()')
-        loader.add_xpath('author', './/a[@class="nombre"]/text()')
+        loader.add_xpath('author', './/span[@class="flow-author"]/text()')
         loader.add_xpath('url', './/h2//@href')
         return loader.load_item()
