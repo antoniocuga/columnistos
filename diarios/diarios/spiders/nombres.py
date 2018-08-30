@@ -8,6 +8,7 @@ class NombresSpider(scrapy.Spider):
     name = 'nombres'
     # parse it from local file
     cwd = os.getcwd()
+    print("este es el path  %s" % cwd)
     start_urls = [f'file:////127.0.0.1/{cwd}/Nombres.html']
 
     custom_settings = {

@@ -17,15 +17,14 @@ class ElcomerciopeSpider(scrapy.Spider):
         @returns requests 0 0
         @scrapes author title url
         """
-        selectors = response.xpath('//div[@class="flows-grid"]//div[@class="flow-1x1"]')
-        
+        selectors = response.xpath('//div[@class="flow-1x1"]')
+        print(selectors)
         for selector in selectors:
             yield self.parse_article(selector, response)
 
     def parse_article(self, selector, response):
         loader = ItemLoader(DiariosItem(), selector=selector)
-
-        loader.add_xpath('title', './/h2//text()')
-        loader.add_xpath('author', './/span[@class="flow-author"]/text()')
+        loader.add_xpath('title', './/h2[@class="flow-title"]//text()')
+        loader.add_xpath('author', './/span[@class="flow-author"]//text()')
         loader.add_xpath('url', './/h2//@href')
         return loader.load_item()

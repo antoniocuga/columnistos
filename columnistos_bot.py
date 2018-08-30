@@ -186,7 +186,7 @@ def daily_tweet(daily_stats):
         t_count += row['total']
     if len(daily_stats) > 1:
         percent_t = round(f_count / t_count * 100)
-        text += f'\n ———\n Total: {percent_t} % ({f_count} de {t_count})'
+        text += '\n ———\n Total: %s % (%s de %s)' % (percent_t, f_count, t_count)
     return text
 
 
