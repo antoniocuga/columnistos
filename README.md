@@ -6,6 +6,17 @@ Autores en [COLLABORATORS.md].
 
 PRs bienvenidos.
 
+
+## En los medios:
+
+[Resumen de 2018 de Columnitos Argentina:](https://distintaslatitudes.net/columnistos-bot-documentar-brecha-de-genero-en-medios-argentinos)
+
+[En Distintas Latitudes:](https://distintaslatitudes.net/columnistos-bot-documentar-brecha-de-genero-en-medios-argentinos)
+
+[En TELAM, la agencia de noticias estatal argentina:](http://www.telam.com.ar/notas/201712/232365-bot-tuiteo-genero-diarios.html)
+
+
+
 ## Bots Hermanas:
 
 Chile: [@columnistas_cl](https://twitter.com/columnistas_cl).
@@ -115,6 +126,10 @@ Este es el paso que genera los tweets del resumen del día anterior al que se co
 runbottweet.sh
 ```
 
+# Dump
+
+En el archivo `dump_db.sh` hay instrucciones para sumar el dump que se genera al repositorio de la organización.
+
 # Cron
 
 Para que todo funcione automaticamente hay que agregar los `.sh` a algún cronjob. En el caso de [@columnistos] la configuración actual es:
@@ -123,6 +138,7 @@ Para que todo funcione automaticamente hay que agregar los `.sh` a algún cronjo
 30 * * * * $HOME/columnistos/runcrawlers.sh
 */15 * * * * $HOME/columnistos/runbotdm.sh
 0 10 * * * $HOME/columnistos/runbottweet.sh
+5 10 * * * $HOME/columnistos/dump_db.sh
 ```
 # Instalación y uso con Docker
 
